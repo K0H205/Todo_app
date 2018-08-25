@@ -5,6 +5,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { TasksComponent } from './tasks/tasks.component';
   imports: [
     BrowserModule,
     HttpModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
