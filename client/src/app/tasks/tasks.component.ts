@@ -17,6 +17,7 @@ export class TasksComponent implements OnInit {
   ngOnInit() {
     this.getTasks();
   }
+
   getTasks(): void {
     this.taskService.getTasks()
     .subscribe(tasks => this.tasks = tasks);
@@ -30,6 +31,7 @@ export class TasksComponent implements OnInit {
         this.tasks.push(task);
       });
   }
+  
   update(task: Task): void {
     this.taskService.updateTask(task).subscribe();
   }

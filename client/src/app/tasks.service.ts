@@ -7,9 +7,10 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-  
 @Injectable({providedIn: 'root'})
 export class TaskService {
+
+  //Rails APIServer URI
   private tasksUrl = 'http://localhost:3000/tasks';
 
   constructor(private http: HttpClient){}
