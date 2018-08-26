@@ -1,0 +1,4 @@
+{
+    "tasksUrl": "http://localhost:4000/tasks",
+    "textfile": "assets/textfile.txt"
+  }
