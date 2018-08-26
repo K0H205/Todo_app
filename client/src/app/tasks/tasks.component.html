@@ -16,7 +16,9 @@
           <label class="lidt-group-addon">
             <input type="checkbox" (click)="update(task)" [(ngModel)]="task.done"/>
           </label>
-          <div class="form-control list-lg" [style.text-decoration]="task.done ? 'line-through' : 'none'">{{ task.content }}{{ task.done }}</div>
+          <div class="form-control list-lg" [style.text-decoration]="task.done ? 'line-through' : 'none'">
+            {{ task.content }}
+          </div>
           <span class="list-group-btn del-btn">
             <button type="delete" class="btn btn-danger" (click)="delete(task)">delete</button>
           </span>
