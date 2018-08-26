@@ -36,7 +36,7 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.fetch(:task, {})
+      params.require(:task).permit(:content,:done)
     end
 
 end

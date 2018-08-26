@@ -18,6 +18,10 @@ export class TaskService {
     return this.http.get<Task[]>(this.tasksUrl)
   }
 
+  addTask (task: Task): Observable<Task> {
+    return this.http.post<Task>(this.tasksUrl, task, httpOptions)
+  }
+
   deleteTask (task: Task | number): Observable<Task> {
     const id = typeof task === 'number' ? task : task.id;
     const url = `${this.tasksUrl}/${id}`;

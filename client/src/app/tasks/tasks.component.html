@@ -2,12 +2,15 @@
     <div class="page-header">
       <h1>ToDoApp</h1>
     </div>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="タスクを入力" aria-label="タスクを入力" aria-describedby="basic-addon2">
-      <div class="input-group-append">
-        <span class="input-group-text" id="basic-addon2">追加</span>
+    <div>
+        <label>Task content:
+          <input #taskContent />
+        </label>
+        <!-- (click) 入力値をadd()に渡したあと、入力をクリアする -->
+        <button (click)="add(taskContent.value); taskContent.value=''">
+          add
+        </button>
       </div>
-    </div>
     <ul class="list-group">
       <div *ngFor="let task of tasks">
         <li class="list-group-item">
@@ -16,7 +19,7 @@
             </label>
             <div class="form-control list-lg">{{ task.content }}</div>
             <span class="list-group-btn del-btn">
-              <button type="delete" class="btn btn-danger" (click)="delete(task)">削除</button>
+              <button type="delete" class="btn btn-danger" (click)="delete(task)">delete</button>
               </span>
         </li>
         </div>
