@@ -4,9 +4,8 @@
     </div>
     <div>
         <label>Task content:
-          <input #taskContent />
+          <input #taskContent/>
         </label>
-        <!-- (click) 入力値をadd()に渡したあと、入力をクリアする -->
         <button (click)="add(taskContent.value); taskContent.value=''">
           add
         </button>
@@ -14,14 +13,14 @@
     <ul class="list-group">
       <div *ngFor="let task of tasks">
         <li class="list-group-item">
-            <label class="lidt-group-addon">
-              <input type="checkbox">
-            </label>
-            <div class="form-control list-lg">{{ task.content }}</div>
-            <span class="list-group-btn del-btn">
-              <button type="delete" class="btn btn-danger" (click)="delete(task)">delete</button>
-              </span>
+          <label class="lidt-group-addon">
+            <input type="checkbox" (click)="update(task)" [(ngModel)]="task.done"/>
+          </label>
+          <div class="form-control list-lg" [style.text-decoration]="task.done ? 'line-through' : 'none'">{{ task.content }}{{ task.done }}</div>
+          <span class="list-group-btn del-btn">
+            <button type="delete" class="btn btn-danger" (click)="delete(task)">delete</button>
+          </span>
         </li>
-        </div>
-    </ul>
-  </div>
+    </div>
+  </ul>
+</div>

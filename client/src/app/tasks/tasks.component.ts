@@ -10,6 +10,7 @@ import { Task } from '../task';
 
 export class TasksComponent implements OnInit {
   tasks: Task[];
+  done: boolean;
 
   constructor(private taskService: TaskService) { }
 
@@ -28,6 +29,9 @@ export class TasksComponent implements OnInit {
       .subscribe(task => {
         this.tasks.push(task);
       });
+  }
+  update(task: Task): void {
+    this.taskService.updateTask(task).subscribe();
   }
 
   delete(task: Task): void {

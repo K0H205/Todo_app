@@ -7,6 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
+
   
 @Injectable({providedIn: 'root'})
 export class TaskService {
@@ -20,6 +21,13 @@ export class TaskService {
 
   addTask (task: Task): Observable<Task> {
     return this.http.post<Task>(this.tasksUrl, task, httpOptions)
+  }
+
+  updateTask (task: Task): Observable<Task> {
+    task.done = !task.done;
+    const id = typeof task === 'number' ? task : task.id;
+    const url = `${this.tasksUrl}/${id}`;
+    return this.http.put<Task>(url, task, httpOptions)
   }
 
   deleteTask (task: Task | number): Observable<Task> {
