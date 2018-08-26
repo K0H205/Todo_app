@@ -2,6 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Task } from './task';
 import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
   
 @Injectable({providedIn: 'root'})
 export class TaskService {
@@ -13,4 +18,9 @@ export class TaskService {
     return this.http.get<Task[]>(this.tasksUrl)
   }
 
+  deleteTask (task: Task | number): Observable<Task> {
+    const id = typeof task === 'number' ? task : task.id;
+    const url = `${this.tasksUrl}/${id}`;
+    return this.http.delete<Task>(url, httpOptions)
+  }
 }
