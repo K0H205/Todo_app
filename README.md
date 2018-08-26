@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**<Angularを使用したRaisAPIServerと非同期通信を行うTodoアプリ>**
 
-Things you may want to cover:
+**機能**
 
-* Ruby version
+* Task取得機能
 
-* System dependencies
+* Task追加機能
 
-* Configuration
+* Task削除機能
 
-* Database creation
+* Task更新機能(Taskのdoneカラム(boolean)を切り替え)
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
