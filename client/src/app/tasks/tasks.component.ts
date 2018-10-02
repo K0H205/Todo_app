@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../tasks.service';
 import { Task } from '../task';
 
+import { NgFlashMessageService } from 'ng-flash-messages';
+
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
@@ -12,7 +14,10 @@ export class TasksComponent implements OnInit {
   tasks: Task[];
   done: boolean;
 
-  constructor(private taskService: TaskService) { }
+  constructor(
+    private ngFlashMessageService: NgFlashMessageService,
+    private taskService: TaskService
+    ) { }
 
   ngOnInit() {
     this.getTasks();
@@ -30,6 +35,11 @@ export class TasksComponent implements OnInit {
       .subscribe(task => {
         this.tasks.push(task);
       });
+    this.ngFlashMessageService.showFlashMessage({
+      messages: ["Task was added"],
+      dismissible: true, 
+      timeout: false
+    });
   }
   
   update(task: Task): void {
@@ -39,6 +49,12 @@ export class TasksComponent implements OnInit {
   delete(task: Task): void {
     this.tasks = this.tasks.filter(h => h !== task);
     this.taskService.deleteTask(task).subscribe();
+    this.ngFlashMessageService.showFlashMessage({
+      messages: ["Task was deleted"],
+      dismissible: true, 
+      timeout: false,
+      type: 'danger'
+    });
   }
 
 }
