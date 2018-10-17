@@ -14,9 +14,14 @@
         <label class="lidt-group-addon">
           <input type="checkbox" (click)="update(task)" [(ngModel)]="task.done">
         </label>
-        <div class="form-control list-lg" [style.text-decoration]="task.done ? 'line-through' : 'none'">
-          {{ task.content }}
+        <div *ngIf="task.editing; else elseContent" (click)="edit(task)">
+            <input type="text" value="{{task.content}}">
         </div>
+        <ng-template #elseContent>
+          <div class="form-control list-lg" [style.text-decoration]="task.done ? 'line-through' : 'none'" (click)="edit(task)">
+            {{ task.content }}
+          </div>
+        </ng-template>
         <span class="list-group-btn del-btn">
           <button type="delete" class="btn btn-danger" (click)="delete(task)">delete</button>
         </span>

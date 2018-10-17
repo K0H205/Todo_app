@@ -13,6 +13,7 @@ import { NgFlashMessageService } from 'ng-flash-messages';
 export class TasksComponent implements OnInit {
   tasks: Task[];
   done: boolean;
+  editing: boolean = false;
 
   constructor(
     private ngFlashMessageService: NgFlashMessageService,
@@ -55,6 +56,10 @@ export class TasksComponent implements OnInit {
       timeout: false,
       type: 'danger'
     });
+  }
+
+  edit(task: Task): void{
+    task.editing = !task.editing;
   }
 
 }
