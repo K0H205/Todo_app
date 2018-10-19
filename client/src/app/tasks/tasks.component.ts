@@ -37,7 +37,7 @@ export class TasksComponent implements OnInit {
         this.tasks.push(task);
       });
     this.ngFlashMessageService.showFlashMessage({
-      messages: ["Task was added"],
+      messages: ["Task was added!"],
       dismissible: true, 
       timeout: false
     });
@@ -51,7 +51,7 @@ export class TasksComponent implements OnInit {
     this.tasks = this.tasks.filter(h => h !== task);
     this.taskService.deleteTask(task).subscribe();
     this.ngFlashMessageService.showFlashMessage({
-      messages: ["Task was deleted"],
+      messages: ["Task was deleted!"],
       dismissible: true, 
       timeout: false,
       type: 'danger'

@@ -2,30 +2,43 @@
   <div class="page-header">
     <h1>ToDoApp</h1>
   </div>
-  <div>
-    <label>NewTask
-      <input #taskContent/>
-    </label>
-    <button (click)="add(taskContent.value); taskContent.value=''">add</button>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Whats task?" aria-describedby="basic-addon2" #taskContent/>
+    <div class="input-group-append">
+      <button class="btn btn-danger" type="button" (click)="add(taskContent.value); taskContent.value=''">Add</button>
+    </div>
   </div>
-  <ul class="list-group">
+
+  <div class="tasklist">
+      <ul class="list-group">
+          <li class="list-group-item">
     <div *ngFor="let task of tasks">
-      <li class="list-group-item">
-        <label class="lidt-group-addon">
-          <input type="checkbox" (click)="update(task)" [(ngModel)]="task.done">
-        </label>
-        <div *ngIf="task.editing; else elseContent" (click)="edit(task)">
-            <input type="text" value="{{task.content}}">
+      <div class="input-group mb-3">
+
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <input type="checkbox" aria-label="Checkbox for following text input" (click)="update(task)" [(ngModel)]="task.done">
+          </div>
+        </div>
+
+        <!-- <div *ngIf="task.editing; else elseContent" (click)="edit(task)">
+          <input type="text" class="form-control" value="{{task.content}}">
         </div>
         <ng-template #elseContent>
-          <div class="form-control list-lg" [style.text-decoration]="task.done ? 'line-through' : 'none'" (click)="edit(task)">
+          <div class="form-control"  (click)="edit(task)">
             {{ task.content }}
           </div>
-        </ng-template>
-        <span class="list-group-btn del-btn">
-          <button type="delete" class="btn btn-danger" (click)="delete(task)">delete</button>
-        </span>
-      </li>
+        </ng-template> -->
+
+        <input type="text" class="form-control" [style.text-decoration]="task.done ? 'line-through' : 'none'" (blur)="edit(task)" [(ngModel)]="task.content">
+
+        <div class="input-group-append">
+          <button type="button" class="btn btn-outline-secondary" (click)="delete(task)">Delete</button>
+        </div>
+      </div>
     </div>
-  </ul>
+    </li>
+    </ul>
+  </div>
+
 </div>
