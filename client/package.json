@@ -20,9 +20,12 @@
     "@angular/platform-browser": "^6.1.9",
     "@angular/platform-browser-dynamic": "^6.1.9",
     "@angular/router": "^6.1.9",
+    "@ngrx/effects": "^6.1.2",
+    "@ngrx/store": "^6.1.2",
     "angular-in-memory-web-api": "^0.6.1",
     "core-js": "^2.5.4",
     "ng-flash-messages": "^0.3.0",
+    "ngrx-json-api": "^2.3.0",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",
     "zone.js": "~0.8.26"
